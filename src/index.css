@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -41,6 +42,27 @@
   --color-warning-light: #fbbf24;
   --color-info: #3b82f6;
   --color-info-light: #60a5fa;
+
+  /* Semantic Design Tokens (maps from MASTER.md) */
+  --color-primary: #4f46e5;
+  --color-on-primary: #ffffff;
+  --color-background: #f8fafc;
+  --color-foreground: #0f172a;
+  --color-muted: #f1f5f9;
+  --color-border: #e2e8f0;
+  --color-ring: #6366f1;
+  --color-destructive: #ef4444;
+}
+
+.dark {
+  --color-primary: #818cf8;
+  --color-on-primary: #ffffff;
+  --color-background: #020617;
+  --color-foreground: #f1f5f9;
+  --color-muted: #1e293b;
+  --color-border: #334155;
+  --color-ring: #818cf8;
+  --color-destructive: #f87171;
 }
 
 /* Base Styles */
@@ -49,6 +71,6 @@ html {
 }
 
 body {
-  @apply bg-surface-50 dark:bg-surface-950 text-surface-900 dark:text-surface-100 antialiased;
+  @apply bg-background text-foreground antialiased;
   font-family: var(--font-sans);
 }
