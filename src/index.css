@@ -17,7 +17,7 @@
   --color-privium-800: #3730a3;
   --color-privium-900: #312e81;
 
-  /* Surface Palette — Dark Navy */
+  /* Surface Palette — Slate (light mode default) */
   --color-surface-50: #f8fafc;
   --color-surface-100: #f1f5f9;
   --color-surface-200: #e2e8f0;
@@ -30,32 +30,35 @@
   --color-surface-900: #0f172a;
   --color-surface-950: #020617;
 
+  /* Surface palette for dark mode — dark navy */
+  --color-surface-dark-50: #020617;
+  --color-surface-dark-100: #0f172a;
+  --color-surface-dark-200: #1e293b;
+  --color-surface-dark-300: #334155;
+  --color-surface-dark-400: #475569;
+  --color-surface-dark-500: #64748b;
+  --color-surface-dark-600: #94a3b8;
+  --color-surface-dark-700: #cbd5e1;
+  --color-surface-dark-800: #e2e8f0;
+  --color-surface-dark-900: #f1f5f9;
+  --color-surface-dark-950: #f8fafc;
+
   /* Semantic Colors */
   --color-accent: #f59e0b;
   --color-accent-light: #fbbf24;
   --color-success: #10b981;
   --color-success-light: #34d399;
+  --color-success-dark: #059669;
   --color-danger: #ef4444;
   --color-danger-light: #f87171;
+  --color-danger-dark: #dc2626;
   --color-warning: #f59e0b;
   --color-warning-light: #fbbf24;
+  --color-warning-dark: #d97706;
   --color-info: #3b82f6;
   --color-info-light: #60a5fa;
-}
-
-/* Dark mode overrides */
-.dark {
-  --color-surface-50: #020617;
-  --color-surface-100: #0f172a;
-  --color-surface-200: #1e293b;
-  --color-surface-300: #334155;
-  --color-surface-400: #475569;
-  --color-surface-500: #64748b;
-  --color-surface-600: #94a3b8;
-  --color-surface-700: #cbd5e1;
-  --color-surface-800: #e2e8f0;
-  --color-surface-900: #f1f5f9;
-  --color-surface-950: #f8fafc;
+  --color-info-dark: #2563eb;
+  --color-foreground: #f1f5f9;
 }
 
 /* Base Styles */
@@ -64,7 +67,7 @@ html {
 }
 
 body {
-  @apply bg-surface-900 text-surface-200 antialiased;
+  @apply bg-surface-50 dark:bg-surface-dark-100 text-surface-900 dark:text-surface-100 antialiased;
   font-family: var(--font-sans);
 }
 
