@@ -17,7 +17,7 @@ const badgeVariants = cva(
           'bg-danger/10 dark:bg-danger/10 text-danger-dark dark:text-danger-light',
         info: 'bg-info/10 dark:bg-info/10 text-info-dark dark:text-info-light',
         outline:
-          'border border-surface-300 dark:border-surface-700 text-surface-600 dark:text-surface-400',
+          'border border-border text-muted-foreground',
       },
       size: {
         default: 'px-2.5 py-0.5 text-xs',

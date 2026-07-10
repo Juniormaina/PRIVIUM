@@ -16,7 +16,7 @@ Table.displayName = 'Table';
 
 const TableHeader = forwardRef<HTMLTableSectionElement, HTMLAttributes<HTMLTableSectionElement>>(
   ({ className, ...props }, ref) => (
-    <thead ref={ref} className={cn('[&_tr]:border-b border-surface-200 dark:border-surface-800', className)} {...props} />
+    <thead ref={ref} className={cn('[&_tr]:border-b border-border', className)} {...props} />
   )
 );
 TableHeader.displayName = 'TableHeader';
@@ -36,7 +36,7 @@ const TableFooter = forwardRef<HTMLTableSectionElement, HTMLAttributes<HTMLTable
   ({ className, ...props }, ref) => (
     <tfoot
       ref={ref}
-      className={cn('border-t border-surface-200 dark:border-surface-800 bg-surface-100/50 dark:bg-surface-800/50 font-medium', className)}
+      className={cn('border-t border-border bg-muted/50 font-medium', className)}
       {...props}
     />
   )
@@ -48,9 +48,9 @@ const TableRow = forwardRef<HTMLTableRowElement, HTMLAttributes<HTMLTableRowElem
     <tr
       ref={ref}
       className={cn(
-        'border-b border-surface-200 dark:border-surface-800 transition-colors',
-        'hover:bg-surface-100/50 dark:hover:bg-surface-800/50',
-        'data-[state=selected]:bg-surface-100 dark:data-[state=selected]:bg-surface-800',
+        'border-b border-border transition-colors',
+        'hover:bg-muted/50',
+        'data-[state=selected]:bg-muted',
         className
       )}
       {...props}
@@ -64,7 +64,7 @@ const TableHead = forwardRef<HTMLTableCellElement, ThHTMLAttributes<HTMLTableCel
     <th
       ref={ref}
       className={cn(
-        'h-12 px-4 text-left align-middle font-medium text-surface-500 dark:text-surface-400',
+        'h-12 px-4 text-left align-middle font-medium text-muted-foreground',
         '[&:has([role=checkbox])]:pr-0',
         className
       )}
@@ -92,7 +92,7 @@ const TableCaption = forwardRef<HTMLTableCaptionElement, HTMLAttributes<HTMLTabl
   ({ className, ...props }, ref) => (
     <caption
       ref={ref}
-      className={cn('mt-4 text-sm text-surface-500 dark:text-surface-400', className)}
+      className={cn('mt-4 text-sm text-muted-foreground', className)}
       {...props}
     />
   )

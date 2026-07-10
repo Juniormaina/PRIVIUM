@@ -12,11 +12,11 @@ const buttonVariants = cva(
         destructive:
           'bg-danger text-white shadow-sm hover:bg-danger/90',
         outline:
-          'border border-surface-300 dark:border-surface-700 bg-transparent hover:bg-surface-100 dark:hover:bg-surface-800 text-surface-700 dark:text-surface-300',
+          'border border-border bg-transparent hover:bg-muted text-foreground',
         secondary:
-          'bg-surface-200 dark:bg-surface-800 text-surface-800 dark:text-surface-200 hover:bg-surface-300 dark:hover:bg-surface-700 shadow-sm',
+          'bg-muted text-foreground hover:bg-border/50 shadow-sm',
         ghost:
-          'text-surface-600 dark:text-surface-400 hover:bg-surface-100 dark:hover:bg-surface-800 hover:text-surface-900 dark:hover:text-surface-100',
+          'text-muted-foreground hover:bg-muted hover:text-foreground',
         link: 'text-privium-500 underline-offset-4 hover:underline',
       },
       size: {

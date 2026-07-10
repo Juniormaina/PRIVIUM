@@ -52,6 +52,9 @@
   --color-border: #e2e8f0;
   --color-ring: #6366f1;
   --color-destructive: #ef4444;
+  --color-card: #ffffff;
+  --color-card-foreground: #0f172a;
+  --color-muted-foreground: #64748b;
 }
 
 .dark {
@@ -63,6 +66,9 @@
   --color-border: #334155;
   --color-ring: #818cf8;
   --color-destructive: #f87171;
+  --color-card: #0f172a;
+  --color-card-foreground: #f1f5f9;
+  --color-muted-foreground: #94a3b8;
 }
 
 /* Base Styles */

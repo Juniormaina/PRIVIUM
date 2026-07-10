@@ -31,8 +31,8 @@ function Dialog({ open, onClose, children, title, description, className }: Dial
       <DialogOverlay onClose={onClose} />
       <div
         className={cn(
-          'relative z-50 w-full max-w-lg rounded-xl border border-surface-200 dark:border-surface-800',
-          'bg-surface-50 dark:bg-surface-900 shadow-xl',
+          'relative z-50 w-full max-w-lg rounded-xl border border-border',
+          'bg-card shadow-xl',
           'animate-in fade-in-0 zoom-in-95 duration-200',
           className
         )}
@@ -40,17 +40,17 @@ function Dialog({ open, onClose, children, title, description, className }: Dial
         <div className="flex items-center justify-between p-6 pb-0">
           <div>
             {title && (
-              <h2 id="dialog-title" className="text-lg font-semibold text-surface-900 dark:text-surface-100">
+              <h2 id="dialog-title" className="text-lg font-semibold text-foreground">
                 {title}
               </h2>
             )}
             {description && (
-              <p className="mt-1 text-sm text-surface-500 dark:text-surface-400">{description}</p>
+              <p className="mt-1 text-sm text-muted-foreground">{description}</p>
             )}
           </div>
           <button
             onClick={onClose}
-            className="rounded-lg p-1 text-surface-400 hover:text-surface-600 dark:hover:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-800 transition-colors"
+            className="rounded-lg p-1 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
             aria-label="Close dialog"
           >
             <X className="h-5 w-5" />
