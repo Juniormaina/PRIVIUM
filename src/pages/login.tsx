@@ -73,7 +73,7 @@ export default function LoginPage() {
 
   return (
     <GuestRoute>
-      <div className="flex min-h-screen flex-col items-center justify-center bg-surface-50 dark:bg-surface-950 px-4">
+      <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4">
         {/* Background effect */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 right-0 h-[500px] w-[500px] rounded-full bg-privium-500/10 blur-3xl" />
