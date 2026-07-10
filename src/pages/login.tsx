@@ -36,7 +36,7 @@ export default function LoginPage() {
 
   return (
     <GuestRoute>
-      <div className="flex min-h-screen flex-col items-center justify-center bg-surface-950 px-4">
+      <div className="flex min-h-screen flex-col items-center justify-center bg-surface-50 dark:bg-surface-950 px-4">
         {/* Background effect */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 right-0 h-[500px] w-[500px] rounded-full bg-privium-500/10 blur-3xl" />
@@ -51,7 +51,7 @@ export default function LoginPage() {
                 <span className="text-xl font-bold text-white">P</span>
               </div>
             </div>
-            <h1 className="text-2xl font-bold text-surface-100">PRIVIUM</h1>
+            <h1 className="text-2xl font-bold text-surface-900 dark:text-surface-100">PRIVIUM</h1>
             <p className="mt-1 text-sm text-surface-500">
               Enterprise Treasury & Payroll Platform
             </p>
@@ -87,7 +87,7 @@ export default function LoginPage() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-[38px] text-surface-400 hover:text-surface-300 transition-colors"
+                    className="absolute right-3 top-[38px] text-surface-500 dark:text-surface-400 hover:text-surface-400 dark:hover:text-surface-300 transition-colors"
                     aria-label={showPassword ? 'Hide password' : 'Show password'}
                   >
                     {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -120,7 +120,7 @@ export default function LoginPage() {
             </CardContent>
           </Card>
 
-          <p className="mt-6 text-center text-xs text-surface-600">
+          <p className="mt-6 text-center text-xs text-surface-500 dark:text-surface-400">
             Secured by end-to-end encryption &middot; SOC 2 compliant
           </p>
         </div>
