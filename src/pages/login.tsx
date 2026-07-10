@@ -6,6 +6,7 @@ import { Input } from '../components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../components/ui/card';
 import { GuestRoute } from '../components/guards/guest-route';
 import { Eye, EyeOff, ArrowRight } from 'lucide-react';
+import { SiGithub, SiMicrosoft } from 'react-icons/si';
 import { toast } from 'sonner';
 
 export default function LoginPage() {
@@ -14,7 +15,9 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
-  const { signIn, signInWithGoogle } = useAuth();
+  const [isGithubLoading, setIsGithubLoading] = useState(false);
+  const [isMicrosoftLoading, setIsMicrosoftLoading] = useState(false);
+  const { signIn, signInWithGoogle, signInWithGithub, signInWithMicrosoft } = useAuth();
   const navigate = useNavigate();
 
   const handleGoogleSignIn = async () => {
@@ -25,6 +28,28 @@ export default function LoginPage() {
       toast.error('Failed to sign in with Google');
     } finally {
       setIsGoogleLoading(false);
+    }
+  };
+
+  const handleGithubSignIn = async () => {
+    setIsGithubLoading(true);
+    try {
+      await signInWithGithub();
+    } catch {
+      toast.error('Failed to sign in with GitHub');
+    } finally {
+      setIsGithubLoading(false);
+    }
+  };
+
+  const handleMicrosoftSignIn = async () => {
+    setIsMicrosoftLoading(true);
+    try {
+      await signInWithMicrosoft();
+    } catch {
+      toast.error('Failed to sign in with Microsoft');
+    } finally {
+      setIsMicrosoftLoading(false);
     }
   };
 
@@ -157,6 +182,45 @@ export default function LoginPage() {
                   </span>
                 )}
               </Button>
+
+              <div className="mt-3 grid grid-cols-2 gap-3">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={handleGithubSignIn}
+                  disabled={isGithubLoading}
+                >
+                  {isGithubLoading ? (
+                    <span className="flex items-center gap-2">
+                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-surface-400 border-t-transparent" />
+                      Connecting...
+                    </span>
+                  ) : (
+                    <span className="flex items-center justify-center gap-2">
+                      <SiGithub className="h-5 w-5" />
+                      GitHub
+                    </span>
+                  )}
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={handleMicrosoftSignIn}
+                  disabled={isMicrosoftLoading}
+                >
+                  {isMicrosoftLoading ? (
+                    <span className="flex items-center gap-2">
+                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-surface-400 border-t-transparent" />
+                      Connecting...
+                    </span>
+                  ) : (
+                    <span className="flex items-center justify-center gap-2">
+                      <SiMicrosoft className="h-5 w-5" />
+                      Microsoft
+                    </span>
+                  )}
+                </Button>
+              </div>
 
               <div className="mt-6 text-center">
                 <p className="text-sm text-surface-500">
