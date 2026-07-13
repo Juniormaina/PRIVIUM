@@ -79,9 +79,7 @@ export default function SignupPage() {
         <div className="relative w-full max-w-md">
           <div className="mb-8 text-center">
             <div className="inline-flex items-center justify-center mb-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-privium-500 shadow-lg shadow-privium-500/20">
-                <span className="text-xl font-bold text-white">P</span>
-              </div>
+              <img src="/privium.svg" alt="PRIVIUM" className="h-14 w-14" />
             </div>
             <h1 className="text-2xl font-bold text-surface-900 dark:text-surface-100">Create your account</h1>
             <p className="mt-1 text-sm text-surface-500">

@@ -6,6 +6,7 @@ import { GuestRoute } from './components/guards/guest-route';
 // Lazy load pages for better performance
 import { lazy, Suspense } from 'react';
 
+const LandingPage = lazy(() => import('./pages/landing'));
 const LoginPage = lazy(() => import('./pages/login'));
 const SignupPage = lazy(() => import('./pages/signup'));
 const DashboardPage = lazy(() => import('./pages/dashboard'));
@@ -34,6 +35,7 @@ export default function App() {
         <Suspense fallback={<PageLoader />}>
           <Routes>
             {/* Public routes */}
+            <Route path="/" element={<LandingPage />} />
             <Route
               path="/login"
               element={
@@ -100,9 +102,6 @@ export default function App() {
                 </ProtectedRoute>
               }
             />
-
-            {/* Root redirect */}
-            <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
             {/* 404 */}
             <Route path="*" element={<NotFoundPage />} />

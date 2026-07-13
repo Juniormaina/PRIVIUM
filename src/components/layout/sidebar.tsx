@@ -86,9 +86,7 @@ export function Sidebar({ isMobileOpen, onMobileClose }: SidebarProps) {
       {/* Logo */}
       <div className={cn('flex h-16 items-center border-b border-surface-800 px-4', collapsed && 'justify-center')}>
         <div className="flex items-center gap-3">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-privium-500">
-            <span className="text-sm font-bold text-white">P</span>
-          </div>
+          <img src="/privium.svg" alt="PRIVIUM" className="h-8 w-8" />
           {!collapsed && (
             <div className="flex flex-col">
               <span className="text-sm font-semibold text-surface-100">PRIVIUM</span>
@@ -189,9 +187,7 @@ export function Sidebar({ isMobileOpen, onMobileClose }: SidebarProps) {
           <aside className="fixed left-0 top-0 h-full w-60 z-50 bg-surface-950 border-r border-surface-800 animate-in slide-in-from-left duration-200">
             <div className="flex h-16 items-center justify-between px-4 border-b border-surface-800">
               <div className="flex items-center gap-3">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-privium-500">
-                  <span className="text-sm font-bold text-white">P</span>
-                </div>
+                <img src="/privium.svg" alt="PRIVIUM" className="h-8 w-8" />
                 <span className="text-sm font-semibold text-surface-100">PRIVIUM</span>
               </div>
               <button

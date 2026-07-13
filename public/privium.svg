@@ -1,0 +1,124 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background gradient: deep indigo to near-black -->
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="256" y2="256">
+      <stop offset="0%" stop-color="#1e1b4b" />
+      <stop offset="50%" stop-color="#0f0a2e" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+
+    <!-- P letter gradient: luminous indigo -->
+    <linearGradient id="pGrad" x1="48" y1="0" x2="208" y2="256">
+      <stop offset="0%" stop-color="#a5b4fc" />
+      <stop offset="40%" stop-color="#818cf8" />
+      <stop offset="75%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#4f46e5" />
+    </linearGradient>
+
+    <!-- Border gradient with cyber edge -->
+    <linearGradient id="borderGrad" x1="0" y1="0" x2="256" y2="256">
+      <stop offset="0%" stop-color="#818cf8" stop-opacity="0.8" />
+      <stop offset="30%" stop-color="#6366f1" stop-opacity="0.3" />
+      <stop offset="70%" stop-color="#4f46e5" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0.6" />
+    </linearGradient>
+
+    <!-- Neon glow filter -->
+    <filter id="neonGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur1" />
+      <feGaussianBlur in="SourceGraphic" stdDeviation="24" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Subtle glow for inner accents -->
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+      <feComponentTransfer in="blur" result="glow">
+        <feFuncA type="linear" slope="0.4" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode in="glow" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Circuit grid pattern -->
+    <pattern id="circuitGrid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0V32M0 32H32" stroke="#6366f1" stroke-width="0.5" stroke-opacity="0.06" />
+    </pattern>
+
+    <!-- Hexagonal dot pattern for cyber texture -->
+    <pattern id="hexDots" width="16" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="8" cy="7" r="1" fill="#818cf8" fill-opacity="0.05" />
+      <circle cx="8" cy="21" r="1" fill="#818cf8" fill-opacity="0.05" />
+      <circle cx="0" cy="0" r="1" fill="#818cf8" fill-opacity="0.05" />
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="256" height="256" rx="48" fill="url(#bgGrad)" />
+
+  <!-- Circuit grid overlay -->
+  <rect width="256" height="256" rx="48" fill="url(#circuitGrid)" />
+
+  <!-- Hex dot overlay -->
+  <rect width="256" height="256" rx="48" fill="url(#hexDots)" />
+
+  <!-- Outer glow border ring -->
+  <rect x="6" y="6" width="244" height="244" rx="42" fill="none" stroke="#818cf8" stroke-width="1" stroke-opacity="0.12" />
+
+  <!-- Main gradient border -->
+  <rect x="2" y="2" width="252" height="252" rx="46" fill="none" stroke="url(#borderGrad)" stroke-width="3" />
+
+  <!-- Neon glow aura behind P -->
+  <path
+    d="M 64 44 L 64 212 L 100 212 L 100 146 L 156 146 L 180 122 L 180 68 L 156 44 L 64 44 Z"
+    fill="#818cf8"
+    filter="url(#neonGlow)"
+    opacity="0.35"
+  />
+
+  <!-- P letterform — angular, geometric, cyber -->
+  <path
+    d="M 64 44 L 64 212 L 100 212 L 100 146 L 156 146 L 180 122 L 180 68 L 156 44 L 64 44 Z"
+    fill="url(#pGrad)"
+  />
+
+  <!-- Inner cutout of P bowl — creates the angular hollow -->
+  <path
+    d="M 100 80 L 140 80 L 156 96 L 156 118 L 140 134 L 100 134 Z"
+    fill="#0f0a2e"
+  />
+
+  <!-- Inner glow edge on cutout -->
+  <path
+    d="M 100 80 L 140 80 L 156 96 L 156 118 L 140 134 L 100 134 Z"
+    fill="none"
+    stroke="#a5b4fc"
+    stroke-width="1"
+    stroke-opacity="0.25"
+  />
+
+  <!-- Subtle highlight edge on P -->
+  <path
+    d="M 64 44 L 100 44 L 100 80 L 140 80 L 156 96"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="1.5"
+    stroke-opacity="0.2"
+  />
+
+  <!-- Decorative: diagonal data stream lines -->
+  <line x1="182" y1="222" x2="222" y2="182" stroke="#818cf8" stroke-width="1.5" stroke-opacity="0.25" stroke-linecap="round" />
+  <line x1="190" y1="222" x2="222" y2="190" stroke="#818cf8" stroke-width="1" stroke-opacity="0.12" stroke-linecap="round" />
+
+  <!-- Decorative: tiny diamond accent bottom-right -->
+  <rect x="204" y="204" width="8" height="8" rx="1" fill="#a5b4fc" fill-opacity="0.3" transform="rotate(45 208 208)" />
+
+  <!-- Decorative: tiny diamond accent top-left -->
+  <rect x="40" y="40" width="6" height="6" rx="1" fill="#a5b4fc" fill-opacity="0.2" transform="rotate(45 43 43)" />
+</svg>
