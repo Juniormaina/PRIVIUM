@@ -6,7 +6,7 @@ import { Input } from '../components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../components/ui/card';
 import { GuestRoute } from '../components/guards/guest-route';
 import { ArrowRight } from 'lucide-react';
-import { SiGithub, SiMicrosoft } from 'react-icons/si';
+import { SiGithub } from 'react-icons/si';
 import { toast } from 'sonner';
 
 export default function SignupPage() {
@@ -17,8 +17,7 @@ export default function SignupPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [isGithubLoading, setIsGithubLoading] = useState(false);
-  const [isMicrosoftLoading, setIsMicrosoftLoading] = useState(false);
-  const { signUp, signInWithGoogle, signInWithGithub, signInWithMicrosoft } = useAuth();
+  const { signUp, signInWithGoogle, signInWithGithub } = useAuth();
   const navigate = useNavigate();
 
   const handleGoogleSignUp = async () => {
@@ -40,17 +39,6 @@ export default function SignupPage() {
       toast.error('Failed to sign up with GitHub');
     } finally {
       setIsGithubLoading(false);
-    }
-  };
-
-  const handleMicrosoftSignUp = async () => {
-    setIsMicrosoftLoading(true);
-    try {
-      await signInWithMicrosoft();
-    } catch {
-      toast.error('Failed to sign up with Microsoft');
-    } finally {
-      setIsMicrosoftLoading(false);
     }
   };
 
@@ -196,45 +184,25 @@ export default function SignupPage() {
                 )}
               </Button>
 
-              <div className="mt-3 grid grid-cols-2 gap-3">
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="w-full"
-                  onClick={handleGithubSignUp}
-                  disabled={isGithubLoading}
-                >
-                  {isGithubLoading ? (
-                    <span className="flex items-center gap-2">
-                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-surface-400 border-t-transparent" />
-                    </span>
-                  ) : (
-                    <span className="flex items-center justify-center gap-2">
-                      <SiGithub className="h-5 w-5" />
-                      <span>GitHub</span>
-                    </span>
-                  )}
-                </Button>
-
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="w-full"
-                  onClick={handleMicrosoftSignUp}
-                  disabled={isMicrosoftLoading}
-                >
-                  {isMicrosoftLoading ? (
-                    <span className="flex items-center gap-2">
-                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-surface-400 border-t-transparent" />
-                    </span>
-                  ) : (
-                    <span className="flex items-center justify-center gap-2">
-                      <SiMicrosoft className="h-5 w-5" />
-                      <span>Microsoft</span>
-                    </span>
-                  )}
-                </Button>
-              </div>
+              <Button
+                type="button"
+                variant="outline"
+                className="mt-3 w-full"
+                onClick={handleGithubSignUp}
+                disabled={isGithubLoading}
+              >
+                {isGithubLoading ? (
+                  <span className="flex items-center gap-2">
+                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-surface-400 border-t-transparent" />
+                    Connecting...
+                  </span>
+                ) : (
+                  <span className="flex items-center justify-center gap-2">
+                    <SiGithub className="h-5 w-5" />
+                    GitHub
+                  </span>
+                )}
+              </Button>
 
               <div className="mt-6 text-center">
                 <p className="text-sm text-surface-500">
