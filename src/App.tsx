@@ -15,6 +15,7 @@ const PayrollPage = lazy(() => import('./pages/payroll'));
 const OrganizationPage = lazy(() => import('./pages/organization'));
 const SettingsPage = lazy(() => import('./pages/settings'));
 const AdminPage = lazy(() => import('./pages/admin'));
+const AIAssistantPage = lazy(() => import('./pages/ai-assistant'));
 const NotFoundPage = lazy(() => import('./pages/not-found'));
 
 function PageLoader() {
@@ -99,6 +100,14 @@ export default function App() {
               element={
                 <ProtectedRoute>
                   <AdminPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/ai-assistant"
+              element={
+                <ProtectedRoute>
+                  <AIAssistantPage />
                 </ProtectedRoute>
               }
             />
