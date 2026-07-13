@@ -22,6 +22,8 @@ const SUGGESTIONS = [
   'How do I set up approval workflows?',
 ];
 
+const FUNCTION_URL = `${import.meta.env.VITE_SUPABASE_URL || 'https://mfxkgqrwwyvpdjvdtuwj.supabase.co'}/functions/v1/ai-assistant`;
+
 export default function AIAssistantPage() {
   const [messages, setMessages] = useState<ChatMessage[]>([WELCOME_MESSAGE]);
   const [input, setInput] = useState('');
@@ -52,26 +54,35 @@ export default function AIAssistantPage() {
     setIsLoading(true);
 
     try {
-      const { data, error: fnError } = await supabase.functions.invoke('ai-assistant', {
-        body: {
+      const response = await fetch(FUNCTION_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(session?.access_token
+            ? { Authorization: `Bearer ${session.access_token}` }
+            : {}),
+        },
+        body: JSON.stringify({
           message: trimmed,
           history: messages
             .filter((m) => m !== WELCOME_MESSAGE)
             .map((m) => ({ role: m.role, content: m.content })),
-        },
+        }),
       });
 
-      if (fnError) {
-        throw new Error(fnError.message || 'Failed to get response');
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({}));
+        throw new Error(body?.error || `Request failed (${response.status})`);
       }
 
+      const data = await response.json();
       if (data?.reply) {
         setMessages((prev) => [
           ...prev,
           { role: 'assistant', content: data.reply },
         ]);
       } else {
-        throw new Error(data?.error || 'No response received');
+        throw new Error('No response received');
       }
     } catch (err) {
       const message =
