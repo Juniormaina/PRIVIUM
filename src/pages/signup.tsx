@@ -63,8 +63,8 @@ export default function SignupPage() {
     if (result.error) {
       toast.error(result.error);
     } else {
-      toast.success('Account created! Check your email to confirm.');
-      navigate('/login');
+      toast.success('Account created! Welcome to PRIVIUM.');
+      navigate('/dashboard');
     }
   };
 
