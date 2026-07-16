@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
 import { useAuth } from '../providers/auth-provider';
-import { supabase } from '../lib/supabase';
 import { Bot, Send, User, Sparkles, AlertCircle } from 'lucide-react';
 import { Button } from '../components/ui/button';
 
