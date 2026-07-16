@@ -18,4 +18,40 @@ It streamlines **enterprise treasury management** and **payroll automation**, co
 - **Frontend:** React + Next.js  
 - **Backend:** Node.js + Express  
 - **Database:** PostgreSQL  
-- **Blockchain Layer:** Avalanche C‑
+- **Blockchain Layer:** Avalanche C‑Chain (smart contracts)  
+- **Deployment:** Natively AI Builder  
+
+---
+
+## 🔌 APIs & Integrations
+- **Avalanche RPC APIs** — Smart contract interaction  
+- **Core Wallet / Web3.js / Ethers.js** — Wallet connection & transaction signing  
+- **Supabase** — Authentication, secure storage, real‑time sync  
+- **GitHub Actions** — CI/CD pipeline for automated builds  
+- **Third‑Party Services:**  
+  - X‑Pesa (fiat ↔ crypto bridge)  
+  - Slack/Discord bots for payroll notifications  
+  - SendGrid/Gmail APIs for reporting  
+
+---
+
+## 🌐 Live Demo
+Privium is deployed on Natively AI Builder:  
+[Preview Link](https://5572uvkvn79jijpliozjkbxj9-5173.preview.nativelyai.app)
+
+---
+
+## 📌 Vision
+Privium aims to empower enterprises with **trustworthy, scalable, and automated financial tools**.  
+By merging blockchain transparency with AI‑driven workflows, it reduces friction in treasury operations and payroll management.
+
+---
+
+## 👥 Team
+- Junior Antony Maina — Founder & Developer
+
+---
+
+## 📫 Contact
+- GitHub: [Juniormaina](https://github.com/Juniormaina)  
+- Email: junior@trisphere.space  
