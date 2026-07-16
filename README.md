@@ -28,10 +28,6 @@ It streamlines **enterprise treasury management** and **payroll automation**, co
 - **Core Wallet / Web3.js / Ethers.js** — Wallet connection & transaction signing  
 - **Supabase** — Authentication, secure storage, real‑time sync  
 - **GitHub Actions** — CI/CD pipeline for automated builds  
-- **Third‑Party Services:**  
-  - X‑Pesa (fiat ↔ crypto bridge)  
-  - Slack/Discord bots for payroll notifications  
-  - SendGrid/Gmail APIs for reporting  
 
 ---
 
