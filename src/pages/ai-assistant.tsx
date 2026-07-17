@@ -11,7 +11,7 @@ interface ChatMessage {
 const WELCOME_MESSAGE: ChatMessage = {
   role: 'assistant',
   content:
-    "Hello! I'm your PRIVIUM AI assistant. I can help you with treasury management, payroll processing, Avalanche blockchain questions, and platform guidance. How can I help you today?",
+    "Hello! I'm **Privy**, your AI assistant for treasury management, payroll processing, Avalanche blockchain questions, and platform guidance. How can I help you today?",
 };
 
 const SUGGESTIONS = [
@@ -130,8 +130,8 @@ export default function AIAssistantPage() {
           <Bot className="h-5 w-5" />
         </div>
         <div>
-          <h1 className="text-lg font-semibold text-surface-100">AI Assistant</h1>
-          <p className="text-xs text-surface-500">Powered by PRIVIUM Intelligence</p>
+          <h1 className="text-lg font-semibold text-surface-100">Privy</h1>
+          <p className="text-xs text-surface-500">Your AI treasury assistant</p>
         </div>
         {error && (
           <button
@@ -251,7 +251,7 @@ export default function AIAssistantPage() {
             </Button>
           </div>
           <p className="mt-1.5 text-[10px] text-surface-600">
-            PRIVIUM AI may produce inaccurate information. Verify critical data in your dashboard.
+            Privy may produce inaccurate information. Verify critical data in your dashboard.
           </p>
         </div>
       </div>

@@ -30,7 +30,7 @@ const mainNavItems: NavItem[] = [
   { label: 'Dashboard', href: '/dashboard', icon: <LayoutDashboard className="h-5 w-5" /> },
   { label: 'Treasury', href: '/treasury', icon: <Wallet className="h-5 w-5" /> },
   { label: 'Payroll', href: '/payroll', icon: <DollarSign className="h-5 w-5" /> },
-  { label: 'AI Assistant', href: '/ai-assistant', icon: <Bot className="h-5 w-5" /> },
+  { label: 'Privy', href: '/ai-assistant', icon: <Bot className="h-5 w-5" /> },
   { label: 'Organization', href: '/organization', icon: <Building2 className="h-5 w-5" /> },
 ];
 
