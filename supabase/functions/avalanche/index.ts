@@ -1,4 +1,5 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { ethers } from "npm:ethers@6.13.5";
 
 // ──────────────── Config ────────────────
@@ -396,6 +397,26 @@ Deno.serve(async (req: Request) => {
   }
 
   try {
+    // ──── JWT Verification ────
+    const authorization = req.headers.get("Authorization");
+    if (!authorization || !authorization.startsWith("Bearer ")) {
+      return new Response(JSON.stringify({ error: "Missing or invalid Authorization header" }), {
+        status: 401,
+        headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+      });
+    }
+    const jwt = authorization.replace("Bearer ", "");
+    const supabaseUrl = Deno.env.get("SUPABASE_URL") ?? "";
+    const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY") ?? "";
+    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+    const { data: { user }, error: authError } = await supabase.auth.getUser(jwt);
+    if (authError || !user) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+      });
+    }
+
     const { action, ...args } = await req.json();
 
     if (!action) {
