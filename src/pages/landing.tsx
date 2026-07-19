@@ -33,7 +33,6 @@ export default function LandingPage() {
           <nav className="hidden items-center gap-8 md:flex">
             <button onClick={() => scrollTo('features')} className="text-sm text-surface-400 hover:text-surface-100 transition-colors">Features</button>
             <button onClick={() => scrollTo('security')} className="text-sm text-surface-400 hover:text-surface-100 transition-colors">Security</button>
-            <button onClick={() => scrollTo('cta')} className="text-sm text-surface-400 hover:text-surface-100 transition-colors">Get Started</button>
           </nav>
           <div className="flex items-center gap-3">
             <Link
