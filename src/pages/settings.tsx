@@ -6,7 +6,6 @@ import { Input } from '../components/ui/input';
 import { Select } from '../components/ui/select';
 import { Badge } from '../components/ui/badge';
 import { Avatar } from '../components/ui/avatar';
-import { Skeleton } from '../components/ui/skeleton';
 import { useTheme } from '../providers/theme-provider';
 import { useAuth } from '../providers/auth-provider';
 import { useOrganization } from '../providers/organization-provider';
@@ -31,15 +30,12 @@ import {
   Globe,
   Palette,
   User,
-  Eye,
   Building2,
-  Lock,
   Smartphone,
   Mail,
   Check,
   Save,
   Loader2,
-  ChevronRight,
   AlertTriangle,
 } from 'lucide-react';
 
@@ -56,7 +52,7 @@ const TABS: { id: SettingsTab; label: string; icon: typeof User }[] = [
 export default function SettingsPage() {
   const [activeTab, setActiveTab] = useState<SettingsTab>('profile');
   const { theme, toggleTheme, setTheme } = useTheme();
-  const { profile, user } = useAuth();
+  const { profile } = useAuth();
   const { currentOrganization, currentOrgId } = useOrganization();
 
   const updateProfile = useUpdateProfile();

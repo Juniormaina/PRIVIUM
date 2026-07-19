@@ -3,7 +3,6 @@ import { useAuth } from '../../providers/auth-provider';
 import { useTheme } from '../../providers/theme-provider';
 import { useOrganization } from '../../providers/organization-provider';
 import { Avatar } from '../ui/avatar';
-import { Button } from '../ui/button';
 import {
   useNotifications,
   useUnreadCount,
@@ -22,12 +21,9 @@ import {
   Sun,
   Moon,
   LogOut,
-  User,
   Settings,
   ChevronDown,
   CheckCheck,
-  Trash2,
-  Loader2,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 

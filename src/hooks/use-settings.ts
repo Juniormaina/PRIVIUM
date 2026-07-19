@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '../lib/supabase';
 import { toast } from 'sonner';
 import { useAuth } from '../providers/auth-provider';
-import { useOrganization } from '../providers/organization-provider';
+import type { TablesUpdate } from '../lib/database.types';
 
 // ──────────────── Profile Update ────────────────
 
@@ -89,7 +89,7 @@ export function useUpdateOrgSettings() {
 
       const { error } = await supabase
         .from('organizations')
-        .update(updates)
+        .update(updates as TablesUpdate<'organizations'>)
         .eq('id', input.orgId);
 
       if (error) throw error;

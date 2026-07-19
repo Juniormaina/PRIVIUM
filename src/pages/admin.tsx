@@ -23,9 +23,6 @@ import {
   usePlatformMetrics,
   useToggleOrganizationStatus,
   type AdminUserWithOrgs,
-  type Organization,
-  type SystemHealth,
-  type PlatformMetrics,
 } from '../hooks/use-admin';
 import {
   useAuditLogs,
@@ -45,7 +42,6 @@ import {
   Database,
   Globe,
   FileText,
-  Wifi,
   Server,
   Lock,
   Search,
@@ -60,17 +56,14 @@ import {
   Loader2,
   Filter,
   X,
-  ChevronRight,
   Building2,
   DollarSign,
   Clock,
   UserCheck,
-  AlertTriangle,
   Check,
   Eye,
   UserPlus,
   UserMinus,
-  Ban,
   Play,
   Pause,
 } from 'lucide-react';
@@ -87,7 +80,6 @@ const TABS: { id: AdminTab; label: string; icon: typeof Shield }[] = [
 
 export default function AdminPage() {
   const [activeTab, setActiveTab] = useState<AdminTab>('overview');
-  const { isAdmin } = useOrganization();
 
   const handleTabKeyDown = (e: React.KeyboardEvent, index: number) => {
     let nextIndex: number;
@@ -306,7 +298,7 @@ function AdminOverview() {
 // ──────────────── USERS TAB ────────────────
 
 function AdminUsers() {
-  const { data: users = [], isLoading, error } = useAdminUsers();
+  const { data: users = [], isLoading } = useAdminUsers();
   const [searchQuery, setSearchQuery] = useState('');
   const [viewUser, setViewUser] = useState<AdminUserWithOrgs | null>(null);
 
@@ -472,7 +464,7 @@ function AdminUsers() {
 }
 
 function OrganizationManagement() {
-  const { data: orgs = [], isLoading } = useAdminOrganizations();
+  const { data: orgs = [] } = useAdminOrganizations();
   const toggleOrgStatus = useToggleOrganizationStatus();
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -576,7 +568,7 @@ function AdminAuditLog() {
   const [searchInput, setSearchInput] = useState('');
 
   const { data: logs = [], isLoading } = useAuditLogs(currentOrgId ?? undefined, filters);
-  const exportLogs = useExportAuditLogs();
+  const exportLogs = useExportAuditLogs(currentOrgId ?? undefined);
 
   const handleSearch = useCallback(() => {
     setFilters((prev) => ({ ...prev, search: searchInput || undefined }));
@@ -722,7 +714,7 @@ function AdminAuditLog() {
                     <div className="flex items-center gap-2">
                       <Avatar
                         name={log.profile?.full_name || log.profile?.email || 'Unknown'}
-                        size="xs"
+                        size="sm"
                       />
                       <span className="text-sm text-foreground">
                         {log.profile?.full_name || log.profile?.email || 'Unknown'}

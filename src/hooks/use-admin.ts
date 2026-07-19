@@ -159,7 +159,6 @@ export function usePlatformMetrics() {
         ]);
 
       const allOrgs = orgsResult.status === 'fulfilled' ? (orgsResult.value.data as Organization[]) || [] : [];
-      const totalMembers = membersResult.status === 'fulfilled' ? membersResult.value.count ?? 0 : 0;
       const allTx = txResult.status === 'fulfilled' ? (txResult.value.data as { amount: number }[]) || [] : [];
       const totalPayroll = payrollResult.status === 'fulfilled' ? payrollResult.value.count ?? 0 : 0;
       const pendingApprovals = approvalsResult.status === 'fulfilled' ? approvalsResult.value.count ?? 0 : 0;

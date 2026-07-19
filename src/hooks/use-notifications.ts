@@ -1,8 +1,8 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '../lib/supabase';
 import { toast } from 'sonner';
-import { useEffect, useCallback, useRef } from 'react';
-import type { Tables, TablesInsert, TablesUpdate } from '../lib/database.types';
+import { useEffect, useRef } from 'react';
+import type { Tables } from '../lib/database.types';
 
 export type Notification = Tables<'notifications'>;
 export type NotificationPreference = Tables<'notification_preferences'>;
@@ -18,16 +18,6 @@ export const NOTIFICATION_TYPES: { value: NotificationType; label: string; descr
   { value: 'security', label: 'Security', description: 'Login alerts and security notifications' },
   { value: 'system', label: 'System', description: 'Platform announcements and maintenance' },
 ];
-
-export const NOTIFICATION_ICONS: Record<NotificationType, string> = {
-  transfer: '💰',
-  payroll: '📋',
-  approval: '✅',
-  invite: '👋',
-  compliance: '🔒',
-  security: '🛡️',
-  system: '🔔',
-};
 
 // ──────────────── Query Keys ────────────────
 
@@ -74,7 +64,7 @@ export function useUnreadCount(orgId: string | undefined) {
       return count ?? 0;
     },
     enabled: !!orgId,
-    refetchInterval: 30000, // Poll every 30s as fallback
+    refetchInterval: 30000,
   });
 }
 
@@ -108,7 +98,7 @@ export function useMarkAsRead() {
     mutationFn: async ({ notificationId, orgId }: { notificationId: string; orgId: string }) => {
       const { error } = await supabase
         .from('notifications')
-        .update({ read: true })
+        .update({ read: true } satisfies Partial<Notification>)
         .eq('id', notificationId);
 
       if (error) throw error;
@@ -127,7 +117,7 @@ export function useMarkAllAsRead() {
     mutationFn: async ({ orgId, userId }: { orgId: string; userId: string }) => {
       const { error } = await supabase
         .from('notifications')
-        .update({ read: true })
+        .update({ read: true } satisfies Partial<Notification>)
         .eq('organization_id', orgId)
         .eq('user_id', userId)
         .eq('read', false);
@@ -233,11 +223,9 @@ export function useNotificationRealtime(
           filter: `organization_id=eq.${orgId}`,
         },
         (payload) => {
-          // Invalidate queries to refresh data
           queryClient.invalidateQueries({ queryKey: notifKeys.list(orgId) });
           queryClient.invalidateQueries({ queryKey: notifKeys.unread(orgId) });
 
-          // Call the callback if provided
           const newNotif = payload.new as Notification;
           if (handlerRef.current && newNotif) {
             handlerRef.current(newNotif);
@@ -263,6 +251,6 @@ export async function createNotification(input: {
   resource?: string;
   resource_id?: string;
 }) {
-  const { error } = await supabase.from('notifications').insert(input);
+  const { error } = await supabase.from('notifications').insert(input satisfies Partial<Notification>);
   if (error) console.error('Failed to create notification:', error);
 }

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AppProviders } from './providers/app-providers';
 import { ProtectedRoute } from './components/guards/protected-route';
 import { GuestRoute } from './components/guards/guest-route';
@@ -31,12 +31,82 @@ function PageLoader() {
   );
 }
 
+function KeyboardShortcuts() {
+  const navigate = useNavigate();
+
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    // Don't trigger shortcuts when typing in inputs
+    const target = e.target as HTMLElement;
+    if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT' || target.isContentEditable) {
+      return;
+    }
+
+    // ⌘K or Ctrl+K — Command palette (navigate to AI assistant)
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      navigate('/ai-assistant');
+      return;
+    }
+
+    // ⌘D or Ctrl+D — Dashboard
+    if ((e.metaKey || e.ctrlKey) && e.key === 'd') {
+      e.preventDefault();
+      navigate('/dashboard');
+      return;
+    }
+
+    // ⌘T or Ctrl+T — Treasury
+    if ((e.metaKey || e.ctrlKey) && e.key === 't') {
+      e.preventDefault();
+      navigate('/treasury');
+      return;
+    }
+
+    // ⌘P or Ctrl+P — Payroll
+    if ((e.metaKey || e.ctrlKey) && e.key === 'p') {
+      e.preventDefault();
+      navigate('/payroll');
+      return;
+    }
+
+    // ⌘,  — Settings
+    if ((e.metaKey || e.ctrlKey) && e.key === ',') {
+      e.preventDefault();
+      navigate('/settings');
+      return;
+    }
+
+    // ? — Show keyboard shortcuts help
+    if (e.key === '?' && !e.metaKey && !e.ctrlKey) {
+      // Could show a modal here — for now just navigate to settings
+      e.preventDefault();
+      navigate('/ai-assistant');
+      return;
+    }
+
+    // g then o — Go to Organization
+    if (e.key === 'o' && !e.metaKey && !e.ctrlKey && !e.shiftKey) {
+      // Only trigger if we're not already typing
+      navigate('/organization');
+      return;
+    }
+  }, [navigate]);
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [handleKeyDown]);
+
+  return null;
+}
+
 export default function App() {
   return (
     <AppProviders>
       <BrowserRouter>
         <Suspense fallback={<PageLoader />}>
           <OrganizationProvider>
+            <KeyboardShortcuts />
             <Routes>
               {/* Public routes */}
               <Route path="/" element={<LandingPage />} />
