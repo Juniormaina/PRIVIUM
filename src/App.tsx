@@ -5,7 +5,8 @@ import { GuestRoute } from './components/guards/guest-route';
 import { OrganizationProvider } from './providers/organization-provider';
 
 // Lazy load pages for better performance
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const LandingPage = lazy(() => import('./pages/landing'));
 const LoginPage = lazy(() => import('./pages/login'));
